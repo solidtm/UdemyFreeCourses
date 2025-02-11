@@ -1,13 +1,32 @@
 [versions]
-agp = "8.4.1"
-kotlin = "1.9.0"
-coreKtx = "1.13.1"
+agp = "8.7.3"
+kotlin = "2.0.20"
+coreKtx = "1.15.0"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
-lifecycleRuntimeKtx = "2.8.3"
-activityCompose = "1.9.0"
-composeBom = "2023.08.00"
+lifecycleRuntimeKtx = "2.8.7"
+activityCompose = "1.10.0"
+composeBom = "2025.01.01"
+appcompat = "1.7.0"
+material = "1.12.0"
+daggerHilt = "2.51.1"
+hiltNavigation = "1.2.0"
+lifecycleCompose = "2.8.7"
+retrofitVersion = '2.11.0'
+okHttp3Version = "4.12.0"
+composeFoundationVersion = "1.7.7"
+accompanistVersion = "0.34.0"
+okHttpLoggingVersion = "1.7.7"
+constraintComposeVersion = "1.1.0"
+coilVersion = "2.7.0"
+konfettiVersion = "2.0.4"
+navVersion = "2.8.6"
+kotlinxSerializationVer = "1.7.1"
+kotlinxSerializationPluginVer = "2.0.20"
+webKitVersion = "1.12.1"
+
+
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -24,8 +43,38 @@ androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-toolin
 androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+
+daggerHilt = { group = "com.google.dagger", name = "hilt-android", version.ref = "daggerHilt" }
+daggerKapt = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "daggerHilt" }
+hiltNavigation = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "hiltNavigation" }
+lifeCycleCompose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "lifecycleCompose" }
+hiltAndroidGradlePlugin = { group = "com.google.dagger", name = "hilt-android-gradle-plugin", version.ref = "daggerHilt" }
+hiltAndroidProcessor = { group = "com.google.dagger", name = "dagger-android-processor", version.ref = "daggerHilt" }
+daggerCompiler = { group = "com.google.dagger", name = "dagger-compiler", version.ref = "daggerHilt" }
+lifecycleViewModel = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycleRuntimeKtx" }
+retrofitGson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofitVersion" }
+retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofitVersion" }
+okhttpLogging = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okHttp3Version" }
+composeFoundation = { group = "androidx.compose.foundation", name = "foundation", version.ref = "composeFoundationVersion" }
+accompanistPermissions = { module = "com.google.accompanist:accompanist-permissions", version.ref = "accompanistVersion" }
+materialIconsExtended = { module = "androidx.compose.material:material-icons-extended", version.ref = "okHttpLoggingVersion" }
+constraintCompose = { group = "androidx.constraintlayout", name = "constraintlayout-compose", version.ref = "constraintComposeVersion" }
+coilCompose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coilVersion" }
+coil = { group = "io.coil-kt", name = "coil", version.ref = "coilVersion" }
+konfettiCompose = { group = "nl.dionsegijn", name = "konfetti-compose", version.ref = "konfettiVersion" }
+composeNav = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navVersion" }
+kotlinxSerialization = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerializationVer" }
+webKit = { group = "androidx.webkit", name = "webkit", version.ref = "webKitVersion" }
+
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-
+android-library = { id = "com.android.library", version.ref = "agp" }
+daggerHilt = { id = "com.google.dagger.hilt.android", version.ref = "daggerHilt" }
+navPlugin = { id = "androidx.navigation.safeargs.kotlin", version.ref = "navVersion" }
+serilazation = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlinxSerializationPluginVer" }
+composeCompilier = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+parcelize = { id = "kotlin-parcelize" }

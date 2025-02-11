@@ -21,3 +21,12 @@ dependencyResolutionManagement {
 
 rootProject.name = "UdemyFreeCourses"
 include(":app")
+include(":core")
+include(":features")
+include(":features:onboarding")
+include(":features:home")
+include(":features:wishlist")
+include(":features:profile")
+include(":core:data")
+include(":core:ui")
+include(":features:auth")
