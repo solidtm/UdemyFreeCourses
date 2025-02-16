@@ -25,6 +25,7 @@ navVersion = "2.8.6"
 kotlinxSerializationVer = "1.7.1"
 kotlinxSerializationPluginVer = "2.0.20"
 webKitVersion = "1.12.1"
+splashVersion = "1.0.0"
 
 
 
@@ -78,3 +79,4 @@ navPlugin = { id = "androidx.navigation.safeargs.kotlin", version.ref = "navVers
 serilazation = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlinxSerializationPluginVer" }
 composeCompilier = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 parcelize = { id = "kotlin-parcelize" }
+androidSplash = { id = "androidx.core:core-splashscreen", version.ref = "splashVersion" }
