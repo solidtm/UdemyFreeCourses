@@ -140,9 +140,7 @@ bottomBar = {
                )
                .clickable {
                    if(pagerState.currentPage ==items.size-1){
-                       coroutineScope.launch {
-                           viewModel.goToHome(rootNavController)
-                       }
+
                    }else{
                       coroutineScope.launch {
                           pagerState.animateScrollToPage(pagerState.currentPage+1,0f)
