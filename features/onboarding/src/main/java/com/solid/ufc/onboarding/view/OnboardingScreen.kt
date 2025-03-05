@@ -1,5 +1,7 @@
 package com.solid.ufc.onboarding.view
 
+import androidx.compose.animation.core.LinearOutSlowInEasing
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -15,6 +17,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.PagerState
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Card
@@ -28,6 +31,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
@@ -110,15 +114,6 @@ bottomBar = {
            .fillMaxWidth()
            .padding(bottom = SpacingTheme.four*2+SpacingTheme.one)
    ){
-//       CircularProgressIndicator(
-//           progress = { (pagerState.currentPage +pagerState.currentPageOffsetFraction+1f) / (items.size ) },
-//           modifier = Modifier.size(90.dp),
-//           color = Color(0xFFB24D41),
-//           strokeWidth = 4.dp,
-//           trackColor = Color.Transparent,
-//           strokeCap = StrokeCap.Round,
-//
-//       )
        Canvas(modifier = Modifier.size((SpacingTheme.four -2.dp)*3)) {
            val strokeWidth = 4.dp.toPx()
            val size = min(size.width, size.height)
@@ -144,7 +139,12 @@ bottomBar = {
 
                    }else{
                       coroutineScope.launch {
-                          pagerState.animateScrollToPage(pagerState.currentPage+1,0f)
+                          pagerState.animateScrollToPage(pagerState.currentPage+1,
+                              animationSpec = tween(
+                                  durationMillis = 400, // Custom duration (1000ms = 1 second)
+                                  easing = LinearOutSlowInEasing // Easing for a smooth effect
+                              )
+                              )
                       }
                    }
                }
@@ -179,37 +179,50 @@ bottomBar = {
 
              HorizontalPager(state = pagerState) { page ->
                  val item = items[page]
-                 Column(
-                     modifier = Modifier
-                         .fillMaxSize()
-                         .padding(SpacingTheme.two),
-                     horizontalAlignment = Alignment.CenterHorizontally,
-                     verticalArrangement = Arrangement.Center
-                 ) {
-                     Image(
-                         painter = item.image,
-                         contentDescription = null,
-                         contentScale = ContentScale.Crop,
-                         modifier = Modifier.size(SpacingTheme.four *10)
-                     )
-                     Spacer(modifier = Modifier.height(SpacingTheme.two))
-                     Text(
-                         text = item.title,
-                         fontSize = 18.sp,
-                         textAlign = TextAlign.Center
-                     )
-                     Spacer(modifier = Modifier.height(SpacingTheme.one + SpacingTheme.oneHalf))
-                     Text(
-                         text = item.description,
-                         fontSize = 14.sp,
-                         textAlign = TextAlign.Center
-                     )
-                 }
+                 PagerItem(item,page,pagerState)
              }
          }
      }
 }
 
+@Composable
+fun PagerItem(
+    item: PagerItemData,
+    page:Int,
+    pagerState: PagerState
+) {
+    val pageOffset = (pagerState.currentPage - page) + pagerState.currentPageOffsetFraction
+    val scale = 1f - (0.5f * kotlin.math.abs(pageOffset))
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(SpacingTheme.two)
+            .scale(scale.coerceIn(0.5f, 1f))
+        ,
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        Image(
+            painter = item.image,
+            contentDescription = null,
+            contentScale = ContentScale.Crop,
+            modifier = Modifier.size(SpacingTheme.four *10)
+        )
+        Spacer(modifier = Modifier.height(SpacingTheme.two))
+        Text(
+            text = item.title,
+            fontSize = 18.sp,
+            textAlign = TextAlign.Center
+        )
+        Spacer(modifier = Modifier.height(SpacingTheme.one + SpacingTheme.oneHalf))
+        Text(
+            text = item.description,
+            fontSize = 14.sp,
+            textAlign = TextAlign.Center
+        )
+    }
+}
 //@Composable
 //@UFCPreview
 //fun OnboardingScreenPreview() {
