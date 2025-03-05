@@ -43,6 +43,7 @@ import androidx.navigation.NavController
 import com.solid.ufc.onboarding.R
 import com.solid.ufc.onboarding.viewmodel.OnboardingViewModel
 import com.solid.ufc.ui.theme.PrimaryCardColors
+import com.solid.ufc.ui.theme.SpacingTheme
 import com.solid.ufc.ui.theme.UFCTheme
 import com.solid.ufc.ui.utils.UFCPreview
 import com.solid.ufc.ui.utils.fourPadding
@@ -96,7 +97,7 @@ fun OnboardingScreen(
                      .fourPadding(),
                  horizontalArrangement = Arrangement.SpaceBetween
              ) {
-                 Spacer(Modifier.height(3.dp))
+                 Spacer(Modifier.height(SpacingTheme.oneQuarter))
 
                  Text(text = stringResource(R.string.skip))
              }
@@ -107,7 +108,7 @@ bottomBar = {
        contentAlignment = Alignment.Center,
        modifier = Modifier
            .fillMaxWidth()
-           .padding(bottom = 70.dp)
+           .padding(bottom = SpacingTheme.four*2+SpacingTheme.one)
    ){
 //       CircularProgressIndicator(
 //           progress = { (pagerState.currentPage +pagerState.currentPageOffsetFraction+1f) / (items.size ) },
@@ -118,7 +119,7 @@ bottomBar = {
 //           strokeCap = StrokeCap.Round,
 //
 //       )
-       Canvas(modifier = Modifier.size(90.dp)) {
+       Canvas(modifier = Modifier.size((SpacingTheme.four -2.dp)*3)) {
            val strokeWidth = 4.dp.toPx()
            val size = min(size.width, size.height)
            val radius = (size - strokeWidth) / 2
@@ -153,7 +154,7 @@ bottomBar = {
                    painter =painterResource(R.drawable.arrow_back),
                    contentDescription = null,
                    contentScale = ContentScale.Crop,
-                   modifier = Modifier.size(24.dp)
+                   modifier = Modifier.size(SpacingTheme.three)
                )
            }
 
@@ -181,7 +182,7 @@ bottomBar = {
                  Column(
                      modifier = Modifier
                          .fillMaxSize()
-                         .padding(16.dp),
+                         .padding(SpacingTheme.two),
                      horizontalAlignment = Alignment.CenterHorizontally,
                      verticalArrangement = Arrangement.Center
                  ) {
@@ -189,15 +190,15 @@ bottomBar = {
                          painter = item.image,
                          contentDescription = null,
                          contentScale = ContentScale.Crop,
-                         modifier = Modifier.size(320.dp)
+                         modifier = Modifier.size(SpacingTheme.four *10)
                      )
-                     Spacer(modifier = Modifier.height(16.dp))
+                     Spacer(modifier = Modifier.height(SpacingTheme.two))
                      Text(
                          text = item.title,
                          fontSize = 18.sp,
                          textAlign = TextAlign.Center
                      )
-                     Spacer(modifier = Modifier.height(12.dp))
+                     Spacer(modifier = Modifier.height(SpacingTheme.one + SpacingTheme.oneHalf))
                      Text(
                          text = item.description,
                          fontSize = 14.sp,
