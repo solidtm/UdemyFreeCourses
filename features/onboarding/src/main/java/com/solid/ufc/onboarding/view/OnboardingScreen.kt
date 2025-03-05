@@ -1,5 +1,6 @@
 package com.solid.ufc.onboarding.view
 
+import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -17,7 +18,9 @@ import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Card
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.ProgressIndicatorDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -26,6 +29,8 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
@@ -45,6 +50,7 @@ import com.solid.ufc.ui.utils.onePadding
 import com.solid.ufc.ui.utils.threePadding
 import com.solid.ufc.ui.utils.twoPadding
 import kotlinx.coroutines.launch
+import kotlin.math.min
 
 data class PagerItemData(
     val title: String,
@@ -75,6 +81,8 @@ fun OnboardingScreen(
     val pagerState = rememberPagerState(pageCount = {
         items.size
     })
+    val progress =(pagerState.currentPage +pagerState.currentPageOffsetFraction+1f) / (items.size )
+
     val coroutineScope = rememberCoroutineScope()
 //    LaunchedEffect("goToHome") {
 //        viewModel.goToHome(rootNavController) //you can comment this out when you want to implement going to the home screen
@@ -95,12 +103,33 @@ fun OnboardingScreen(
          },
 bottomBar = {
 
-   Row(
-       horizontalArrangement = Arrangement.Center,
+   Box(
+       contentAlignment = Alignment.Center,
        modifier = Modifier
            .fillMaxWidth()
            .padding(bottom = 70.dp)
    ){
+//       CircularProgressIndicator(
+//           progress = { (pagerState.currentPage +pagerState.currentPageOffsetFraction+1f) / (items.size ) },
+//           modifier = Modifier.size(90.dp),
+//           color = Color(0xFFB24D41),
+//           strokeWidth = 4.dp,
+//           trackColor = Color.Transparent,
+//           strokeCap = StrokeCap.Round,
+//
+//       )
+       Canvas(modifier = Modifier.size(90.dp)) {
+           val strokeWidth = 4.dp.toPx()
+           val size = min(size.width, size.height)
+           val radius = (size - strokeWidth) / 2
+           drawArc(
+               color =  Color(0xFFB24D41),
+               startAngle = 270f,
+               sweepAngle = -360 * progress, // Negative for anticlockwise
+               useCenter = false,
+               style = Stroke(strokeWidth, cap = StrokeCap.Round)
+           )
+       }
        Box(
            contentAlignment = Alignment.Center,
            modifier = Modifier
@@ -111,10 +140,12 @@ bottomBar = {
                )
                .clickable {
                    if(pagerState.currentPage ==items.size-1){
-
+                       coroutineScope.launch {
+                           viewModel.goToHome(rootNavController)
+                       }
                    }else{
                       coroutineScope.launch {
-                          pagerState.animateScrollToPage(pagerState.currentPage+1)
+                          pagerState.animateScrollToPage(pagerState.currentPage+1,0f)
                       }
                    }
                }
