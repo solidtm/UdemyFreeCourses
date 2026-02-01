@@ -1,4 +1,4 @@
-package com.solid.ufc.onboarding.viewmodel
+package com.solid.ufc.onboarding.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

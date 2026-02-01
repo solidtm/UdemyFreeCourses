@@ -1,13 +1,11 @@
-package com.solid.ufc.onboarding.module
+package com.solid.ufc.onboarding
 
 import android.app.Application
-import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import com.solid.ufc.data.module.CoreDataComponent
-import com.solid.ufc.onboarding.view.OnboardingView
-import com.solid.ufc.onboarding.viewmodel.OnboardingViewModel
+import com.solid.ufc.onboarding.ui.OnboardingScreen
+import com.solid.ufc.onboarding.ui.OnboardingViewModel
 import com.solid.ufc.ui.interfaces.UFCNavRoutes
 import dagger.BindsInstance
 import dagger.Component
@@ -41,13 +39,8 @@ class OnboardingModule {
     }
 }
 
-fun NavGraphBuilder.onboarding(
-    rootNaveController: NavController
-) {
+fun NavGraphBuilder.onboarding() {
     composable(UFCNavRoutes.ONBOARDING.route) {
-        OnboardingView(
-            vm = hiltViewModel(),
-            rootNavController = rootNaveController
-        )
+        OnboardingScreen()
     }
 }

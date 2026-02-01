@@ -10,12 +10,12 @@ plugins {
 
 android {
     namespace = "com.solid.ufc"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.solid.ufc"
         minSdk = 24
-        targetSdk = 35
+        targetSdk = 36
         versionCode = 1
         versionName = "1.0"
 
@@ -62,8 +62,6 @@ dependencies {
     api(project(":features:home"))
     api(project(":features:wishlist"))
     api(project(":features:profile"))
-    api(project(":core:data"))
-    api(project(":core:ui"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -77,12 +75,11 @@ dependencies {
     implementation(libs.lifecycleViewModel)
     implementation(libs.hiltNavigation)
     implementation(libs.lifeCycleCompose)
-    implementation(libs.lifecycleViewModel)
     implementation(libs.constraintCompose)
     implementation(libs.coil)
     implementation(libs.coilCompose)
     implementation(libs.kotlinxSerialization)
-    implementation("androidx.core:core-splashscreen:1.0.1")
+    implementation(libs.splashScreen)
 
     kapt(libs.daggerKapt)
     kapt(libs.daggerCompiler)

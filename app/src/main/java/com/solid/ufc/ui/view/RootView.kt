@@ -8,11 +8,11 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.solid.ufc.home.SplashScreen
 import com.solid.ufc.home.viewmodel.HomeViewModel
-import com.solid.ufc.onboarding.module.onboarding
+import com.solid.ufc.onboarding.onboarding
 import com.solid.ufc.ui.interfaces.UFCNavRoutes
 
 @Composable
-fun HomeRootView() {
+fun RootView() {
     val navController = rememberNavController()
     val viewmodel = viewModel<HomeViewModel>()
 
@@ -28,20 +28,16 @@ fun HomeRootView() {
             SplashScreen()
         }
 
-        composable(UFCNavRoutes.HOME.route) {
-        }
+        onboarding()
 
-        onboarding(
-            rootNaveController = navController
-        )
-//
+        composable(UFCNavRoutes.HOME.route) {}
+
 //        profile(navController = navController)
 //
 //        question(navController)
 //
 //        wishlist()
 
-        composable(UFCNavRoutes.ERROR.route) {
-        }
+        composable(UFCNavRoutes.ERROR.route) {}
     }
 }

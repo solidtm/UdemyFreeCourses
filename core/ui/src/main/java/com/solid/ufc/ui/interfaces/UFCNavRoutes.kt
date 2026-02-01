@@ -8,4 +8,5 @@ enum class UFCNavRoutes(val route: String) {
     ERROR("/error"),
     PROFILE("/profile"),
     WISHLIST("/wishlist"),
+    ABOUT_APP("/about_app")
 }

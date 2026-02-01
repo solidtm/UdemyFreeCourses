@@ -2,7 +2,7 @@ package com.solid.ufc.module
 
 import android.app.Application
 import com.solid.ufc.data.module.CoreDataComponent
-import com.solid.ufc.onboarding.module.OnboardingComponent
+import com.solid.ufc.onboarding.OnboardingComponent
 import dagger.BindsInstance
 import dagger.Component
 import dagger.Module

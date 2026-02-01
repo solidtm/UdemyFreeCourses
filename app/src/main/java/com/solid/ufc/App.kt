@@ -3,7 +3,7 @@ package com.solid.ufc
 import android.app.Application
 import com.solid.ufc.data.module.DaggerCoreDataComponent
 import com.solid.ufc.module.DaggerAppComponent
-import com.solid.ufc.onboarding.module.DaggerOnboardingComponent
+import com.solid.ufc.onboarding.DaggerOnboardingComponent
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
