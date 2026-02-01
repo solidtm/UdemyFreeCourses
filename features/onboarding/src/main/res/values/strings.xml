@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">UdemyFreeCourses</string>
+    <string name="pager_one_title">Get Free Udemy Courses</string>
+    <string name="pager_one_desc">Save the hassle of searching, have access to thousands of free Udemy courses based on their categories</string> Ï
+    <string name="pager_two_title">
+        Never miss a course for you
+    </string>
+    <string name="pager_two_desc">
+        Receive notifications on new and existing free courses based on your selected interests.
+    </string>
+    <string name="pager_three_title">Explore top rated courses</string>
+    <string name="pager_three_desc">
+        Explore top rated courses and courses on demand, selected just for you.
+    </string>
+    <string name="skip">
+     Skip
+    </string>
+    <string name="start">
+       Start
+    </string>
+
+</resources>

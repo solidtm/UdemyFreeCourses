@@ -82,6 +82,8 @@ dependencies {
     implementation(libs.coil)
     implementation(libs.coilCompose)
     implementation(libs.kotlinxSerialization)
+    implementation("androidx.core:core-splashscreen:1.0.1")
+
     kapt(libs.daggerKapt)
     kapt(libs.daggerCompiler)
     kapt(libs.hiltAndroidProcessor)
