@@ -2,7 +2,7 @@ package com.solid.ufc.ui.theme
 import androidx.compose.ui.graphics.Color
 
 val primaryLight = Color(0xFF446EA6)
-val onPrimaryLight = Color(0xFFFFFFFF)
+val onPrimaryLight = Color(0xFFB24D41)
 val primaryContainerLight = Color(0xFF446EA6)
 //val onPrimaryContainerLight = Color(0xFFBFC1FF)
 val onPrimaryContainerLight = Color(0xFFFFFFFF)
@@ -18,7 +18,7 @@ val errorLight = Color(0xFF9C1C24)
 val onErrorLight = Color(0xFFFFFFFF)
 val errorContainerLight = Color(0xFFCF4244)
 val onErrorContainerLight = Color(0xFFFFFFFF)
-val backgroundLight = Color(0xFFFCF8FE)
+val backgroundLight = Color(0xFFFAFAFA)
 val onBackgroundLight = Color(0xFF1B1B1F)
 val surfaceLight = Color(0xFFFCF8F8)
 val onSurfaceLight = Color(0xFF1C1B1B)

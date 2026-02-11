@@ -1,6 +1,7 @@
 package com.solid.ufc
 
 import android.app.Application
+import com.solid.ufc.auth.ui.DaggerAuthComponent
 import com.solid.ufc.data.module.DaggerCoreDataComponent
 import com.solid.ufc.module.DaggerAppComponent
 import com.solid.ufc.onboarding.DaggerOnboardingComponent
@@ -21,11 +22,11 @@ class App : Application() {
             .context(this)
             .build()
 
-//        val authComponent = DaggerAuthComponent.builder()
-//            .coreDataComponent(coreDataComponent)
-//            .context(this)
-//            .build()
-//        authComponent.inject(this)
+        val authComponent = DaggerAuthComponent.builder()
+            .coreDataComponent(coreDataComponent)
+            .context(this)
+            .build()
+        authComponent.inject(this)
 
 //
 //        val profileComponent = DaggerProfileComponent.builder()
@@ -47,7 +48,7 @@ class App : Application() {
             .application(this)
             .coreDataComponent(coreDataComponent)
             .onboardingComponent(onboardingComponent)
-//            .authComponent(authComponent)
+            .authComponent(authComponent)
 //            .profileComponent(profileComponent)
 //            .homeComponent(homeComponent)
 //            .wishlistComponent(wishlistComponent)

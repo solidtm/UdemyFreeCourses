@@ -1,6 +1,7 @@
 package com.solid.ufc.module
 
 import android.app.Application
+import com.solid.ufc.auth.ui.AuthComponent
 import com.solid.ufc.data.module.CoreDataComponent
 import com.solid.ufc.onboarding.OnboardingComponent
 import dagger.BindsInstance
@@ -16,7 +17,7 @@ import dagger.hilt.android.components.ViewModelComponent
     dependencies = [
         CoreDataComponent::class,
         OnboardingComponent::class,
-//        AuthComponent::class,
+        AuthComponent::class,
 //        ProfileComponent::class,
 //        HomeComponent::class,
 //        WishListComponent::class
@@ -29,7 +30,7 @@ abstract class AppComponent {
         fun application(application: Application): Builder
         fun coreDataComponent(coreDataComponent: CoreDataComponent): Builder
         fun onboardingComponent(onboardingComponent: OnboardingComponent): Builder
-//        fun authComponent(authComponent: AuthComponent): Builder
+        fun authComponent(authComponent: AuthComponent): Builder
 //        fun profileComponent(profileComponent: ProfileComponent): Builder
 //        fun homeComponent(homeComponent: HomeComponent): Builder
 //        fun wishListComponent(wishListComponent: WishListComponent): Builder

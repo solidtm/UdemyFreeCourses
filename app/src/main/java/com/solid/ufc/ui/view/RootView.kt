@@ -6,6 +6,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.solid.ufc.auth.ui.auth
 import com.solid.ufc.home.SplashScreen
 import com.solid.ufc.home.viewmodel.HomeViewModel
 import com.solid.ufc.onboarding.onboarding
@@ -28,7 +29,9 @@ fun RootView() {
             SplashScreen()
         }
 
-        onboarding()
+        auth(navController)
+
+        onboarding(navController)
 
         composable(UFCNavRoutes.HOME.route) {}
 

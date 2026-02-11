@@ -58,6 +58,7 @@ dependencies {
 
     api(project(":core:data"))
     api(project(":core:ui"))
+    api(project(":features:auth"))
     api(project(":features:onboarding"))
     api(project(":features:home"))
     api(project(":features:wishlist"))

@@ -52,7 +52,9 @@ data class PagerItemData(
 )
 
 @Composable
-fun OnboardingScreen() {
+fun OnboardingScreen(
+    onStartClick: () -> Unit
+) {
     val coroutineScope = rememberCoroutineScope()
     val items = listOf(
         PagerItemData(
@@ -123,12 +125,12 @@ fun OnboardingScreen() {
                                         )
                                     )
                                 }
-                            }
+                            }else { onStartClick() }
                         }
                 ) {
                     if (pagerState.currentPage != items.size - 1) {
                         Image(
-                            painter = painterResource(R.drawable.arrow_back),
+                            painter = painterResource(R.drawable.arrow_forward),
                             contentDescription = null,
                             contentScale = ContentScale.Crop,
                             modifier = Modifier.size(SpacingTheme.three)
@@ -203,5 +205,7 @@ fun PagerItem(
 @Composable
 @UFCPreview
 fun OnboardingPreview() {
-    OnboardingScreen()
+    OnboardingScreen(
+        onStartClick = {}
+    )
 }
